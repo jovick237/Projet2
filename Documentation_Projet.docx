@@ -1,0 +1,44 @@
+Le projet vise à mettre en place un cluster Elasticsearch composé de trois nœuds et un conteneur Kibana pour la visualisation et l'interaction avec les données stockées dans le cluster. L'utilisation de conteneurs Docker via Docker Compose facilite le déploiement et la gestion de cette infrastructure.
+
+Structure du Projet:
+
+Le répertoire est organisé de la manière suivante :
+
+bash
+Copy code
+votre-nom-de-binome/
+│
+├── docker-compose.yml
+├── .env
+├── es-cluster/
+        └── elasticsearch.yml
+        └── kibana.yml
+docker-compose.yml: Ce fichier est responsable de la définition des services Docker, y compris Elasticsearch et Kibana, ainsi que de la configuration des réseaux et volumes nécessaires.
+
+.env: Fichier contenant la variable d'environnement ES_VERSION qui définit la version d'Elasticsearch et de Kibana à utiliser.
+
+es-cluster/elasticsearch.yml: Configuration spécifique à Elasticsearch, indiquant les paramètres du cluster, des nœuds, et d'autres options importantes.
+
+es-cluster/kibana.yml: Configuration spécifique à Kibana, définissant l'hôte Elasticsearch auquel se connecter.
+
+Fichier .env:
+
+La variable d'environnement ES_VERSION est utilisée pour définir la version d'Elasticsearch et de Kibana. Lorsqu'elle est modifiée, elle garantit que le cluster déployé correspond à la version spécifiée. Par exemple, ES_VERSION=8.11.3.
+
+Configuration du cluster Elasticsearch:
+
+Les fichiers de configuration dans le répertoire es-cluster jouent un rôle crucial dans la mise en place du cluster Elasticsearch :
+
+elasticsearch.yml: Définit des paramètres tels que le nom du cluster, le nom du nœud, les hôtes semences pour la découverte, etc.
+
+kibana.yml: Spécifie l'hôte Elasticsearch auquel Kibana doit se connecter.
+
+Les paramètres clés dans ces fichiers incluent les noms de nœuds, le nom du cluster, les hôtes semences et l'hôte Elasticsearch pour Kibana.
+
+docker-compose.yml:
+
+Le fichier docker-compose.yml définit les services suivants :
+
+Trois services Elasticsearch (es01, es02, es03) formant un cluster.
+Un service Kibana connecté au cluster Elasticsearch.
+Les volumes sont configurés pour assurer la persistance des données des nœuds Elasticsearch, et un réseau est défini pour connecter tous les services.

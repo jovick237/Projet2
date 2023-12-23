@@ -1,0 +1,5 @@
+# es-cluster/kibana.yml
+
+server.name: kibana
+server.host: "0"
+elasticsearch.hosts: ["http://es01:9200"]
